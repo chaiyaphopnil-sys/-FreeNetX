@@ -1,0 +1,49 @@
+# Target
+CONFIG_IDF_TARGET="esp32"
+
+# Board has 4 MB flash (DOIT ESP32 DEVKIT V1). Without this the image
+# header says 2 MB and esptool prints a size-mismatch warning on flash.
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE="4MB"
+
+# Per-board credentials and endpoints (see main/Kconfig.projbuild).
+# Set these in `idf.py menuconfig` or override here:
+# CONFIG_FREENETX_UPLINK_SSID="MyWiFi"
+# CONFIG_FREENETX_UPLINK_PASSWORD="secret"
+# CONFIG_FREENETX_NODE_ID="node-001"
+# CONFIG_FREENETX_NODE_TOKEN="secret-token"
+# CONFIG_FREENETX_API_BASE="http://192.168.1.10:8000"
+
+# IP forwarding between interfaces (required for NAPT routing).
+CONFIG_LWIP_IP_FORWARD=y
+
+# NAPT (Network Address Port Translation) in lwIP / ESP32 NAT.
+# Kconfig: Component config -> LWIP -> Enable NAT (depends on LWIP_IP_FORWARD)
+CONFIG_LWIP_IPV4_NAPT=y
+
+# DNS in lwIP is enabled by default (LWIP_DNS==1 is hardcoded).
+
+# Networking
+CONFIG_LWIP_MAX_SOCKETS=10
+
+# Dynamic CPU clock scaling (DFS).
+# CONFIG_PM_ENABLE compiles the esp_pm power-management core; the firmware
+# calls esp_pm_configure() itself (see FREENETX_CPU_* options), so automatic
+# init is left off. Light sleep stays disabled: this node must keep the AP
+# and NAPT running at all times.
+CONFIG_PM_ENABLE=y
+# CONFIG_PM_DFS_INIT_AUTO is not set
+# CONFIG_FREERTOS_USE_TICKLESS_IDLE is not set
+
+# Per-task CPU accounting powers the 30 % / 70 % workload tiers.
+CONFIG_FREERTOS_GENERATE_RUN_TIME_STATS=y
+CONFIG_FREERTOS_RUN_TIME_STATS_USING_ESP_TIMER=y
+
+# Larger main task stack for HTTP + JSON handling.
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
+
+# Logging
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y
+
+# Wi-Fi NVS
+CONFIG_ESP_WIFI_NVS_ENABLED=y

@@ -1,0 +1,15 @@
+﻿# Build artifacts
+build/
+*.bin
+*.elf
+*.map
+*.pyc
+__pycache__/
+.pytest_cache/
+sdkconfig
+sdkconfig.old
+# IDE
+.vscode/
+.idea/
+# Temp
+*.log

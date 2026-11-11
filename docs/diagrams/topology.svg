@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" font-family="Leelawadee UI, Tahoma, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0891b2"/>
+    </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef6f9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="640" fill="url(#bgGrad)"/>
+
+  <text x="40" y="52" font-size="26" font-weight="bold" fill="#0f172a">ภาพรวมการทำงานของระบบ FreeNet-X</text>
+  <text x="40" y="82" font-size="15" fill="#475569">ESP32 ทำงานเป็นทั้งสถานีรับสัญญาณ (STA) และจุดกระจายสัญญาณ (AP) พร้อมทำ NAPT เพื่อแชร์อินเทอร์เน็ตให้ลูกข่าย</text>
+
+  <!-- Internet cloud -->
+  <g filter="url(#shadow)">
+    <path d="M 520 132 a 34 34 0 0 1 34 -30 a 44 44 0 0 1 84 4 a 30 30 0 0 1 6 58 h -104 a 30 30 0 0 1 -20 -32 z"
+          fill="#e0f2fe" stroke="#0891b2" stroke-width="2"/>
+    <text x="600" y="120" text-anchor="middle" font-size="17" font-weight="bold" fill="#0e7490">อินเทอร์เน็ต</text>
+    <text x="600" y="140" text-anchor="middle" font-size="12" fill="#475569">Internet / DNS</text>
+  </g>
+
+  <!-- Router -->
+  <g filter="url(#shadow)">
+    <rect x="500" y="222" width="200" height="86" rx="14" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+    <rect x="520" y="240" width="44" height="10" rx="3" fill="#0891b2"/>
+    <circle cx="534" cy="245" r="3" fill="#67e8f9"/>
+    <circle cx="548" cy="245" r="3" fill="#67e8f9"/>
+    <text x="600" y="272" text-anchor="middle" font-size="16" font-weight="bold" fill="#0f172a">เราเตอร์ / Wi-Fi บ้าน</text>
+    <text x="600" y="294" text-anchor="middle" font-size="12.5" fill="#475569">SSID: ThaiCafe-5G (ที่ได้รับอนุญาต)</text>
+  </g>
+
+  <line x1="600" y1="164" x2="600" y2="218" stroke="#0891b2" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <line x1="600" y1="222" x2="600" y2="168" stroke="#0891b2" stroke-width="2.4" marker-end="url(#arrow)"/>
+
+  <!-- ESP32 board -->
+  <g filter="url(#shadow)">
+    <rect x="405" y="386" width="390" height="150" rx="18" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+    <rect x="427" y="410" width="150" height="102" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="502" y="446" text-anchor="middle" font-size="14" font-weight="bold" fill="#e2e8f0">ESP32-WROOM-32</text>
+    <text x="502" y="468" text-anchor="middle" font-size="11.5" fill="#94a3b8">DOIT DEVKIT V1</text>
+    <text x="502" y="490" text-anchor="middle" font-size="11" fill="#67e8f9">f4:2d:c9:70:8b:7c</text>
+
+    <text x="600" y="430" font-size="15" font-weight="bold" fill="#f8fafc">FreeNet-X Node</text>
+    <text x="600" y="454" font-size="12" fill="#cbd5e1">AP: FreeNetX-Node</text>
+    <text x="600" y="474" font-size="12" fill="#cbd5e1">IP: 192.168.4.1/24 · DHCP .2–.254</text>
+    <text x="600" y="494" font-size="12" fill="#34d399">NAPT เปิดใช้งาน</text>
+    <text x="600" y="516" font-size="11.5" fill="#94a3b8">ไฟสถานะ GPIO2 · เซนเซอร์ GPIO34</text>
+  </g>
+
+  <!-- uplink arrow -->
+  <path d="M 600 310 L 600 382" stroke="#0891b2" stroke-width="2.6" marker-end="url(#arrow)"/>
+  <path d="M 612 382 L 612 310" stroke="#0891b2" stroke-width="2.6" marker-end="url(#arrow)"/>
+  <rect x="622" y="328" width="212" height="38" rx="8" fill="#ecfeff" stroke="#a5f3fc"/>
+  <text x="728" y="352" text-anchor="middle" font-size="12.5" fill="#0e7490">Wi-Fi uplink (STA) 2.4 GHz</text>
+
+  <!-- clients -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="560" width="230" height="60" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="235" y="585" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">โน้ตบุ๊ก / มือถือ</text>
+    <text x="235" y="605" text-anchor="middle" font-size="12" fill="#475569">192.168.4.2</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="850" y="560" width="230" height="60" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="965" y="585" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">แท็บเล็ต / กล้อง</text>
+    <text x="965" y="605" text-anchor="middle" font-size="12" fill="#475569">192.168.4.3</text>
+  </g>
+
+  <path d="M 470 536 L 320 558" stroke="#0891b2" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <path d="M 730 536 L 880 558" stroke="#0891b2" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <text x="480" y="556" font-size="12" fill="#0e7490">AP 4 เครื่องสูงสุด</text>
+
+  <!-- PC monitor -->
+  <g filter="url(#shadow)">
+    <rect x="48" y="330" width="250" height="120" rx="12" fill="#ffffff" stroke="#94a3b8"/>
+    <rect x="66" y="348" width="214" height="66" rx="6" fill="#0c1526"/>
+    <text x="173" y="374" text-anchor="middle" font-size="11" fill="#22d3ee">FreeNet-X · ศูนย์ควบคุม</text>
+    <text x="173" y="394" text-anchor="middle" font-size="10" fill="#94a3b8">CPU · ADC · สถานะลิงก์</text>
+    <text x="173" y="432" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">PC Monitor (COM3)</text>
+  </g>
+  <line x1="298" y1="400" x2="401" y2="430" stroke="#64748b" stroke-width="2.4" marker-end="url(#arrowGray)"/>
+  <text x="300" y="390" font-size="12" fill="#475569">USB Serial 115200</text>
+
+  <!-- legend -->
+  <g transform="translate(40, 120)">
+    <rect x="0" y="0" width="330" height="120" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="16" y="26" font-size="13" font-weight="bold" fill="#0f172a">เส้นทางข้อมูล</text>
+    <line x1="16" y1="48" x2="52" y2="48" stroke="#0891b2" stroke-width="3"/>
+    <text x="64" y="53" font-size="12" fill="#475569">Wi-Fi / IP (uplink + AP + NAPT)</text>
+    <line x1="16" y1="78" x2="52" y2="78" stroke="#64748b" stroke-width="3"/>
+    <text x="64" y="83" font-size="12" fill="#475569">USB Serial (อ่านสถานะเท่านั้น)</text>
+    <text x="16" y="106" font-size="11.5" fill="#64748b">ไม่มีการสแกนหรือเชื่อมต่อ Wi-Fi อื่นโดยไม่ได้รับอนุญาต</text>
+  </g>
+</svg>

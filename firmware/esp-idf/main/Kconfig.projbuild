@@ -1,0 +1,155 @@
+menu "FreeNet-X Node Configuration"
+
+    config FREENETX_UPLINK_SSID
+        string "Uplink Wi-Fi SSID (authorized network)"
+        default "MyHomeWiFi"
+        help
+            SSID of the authorized upstream Wi-Fi network that this node
+            connects to. The node shares this uplink with its own AP clients
+            via NAPT.
+
+    config FREENETX_UPLINK_PASSWORD
+        string "Uplink Wi-Fi password (empty = open network)"
+        default "HomePassword456"
+        help
+            Password for the authorized uplink. Leave empty to join an open
+            network that you are permitted to use (for example a public
+            hotspot). The node only ever joins the SSID entered above; it
+            does not scan for, guess, or capture other networks.
+
+    config FREENETX_AP_SSID
+        string "Access point SSID"
+        default "FreeNetX-Node-2026"
+
+    config FREENETX_AP_PASSWORD
+        string "Access point password (empty = open)"
+        default "04012539"
+        help
+            WPA2 password for the node's own AP. Leave empty for an open AP.
+
+    config FREENETX_NODE_ID
+        string "Node ID"
+        default "node-001"
+        help
+            Unique ID for this node, also provisioned in the server's
+            FREENETX_NODE_TOKENS environment variable.
+
+    config FREENETX_NODE_TOKEN
+        string "Node bearer token"
+        default "REPLACE_WITH_UNIQUE_NODE_TOKEN"
+
+    config FREENETX_API_BASE
+        string "API base URL"
+        default "http://192.168.1.10:8000"
+        help
+            Base URL of the FreeNet-X server, without a trailing slash.
+            Use https:// only if USE_HTTPS is enabled in main.c.
+
+    config FREENETX_SYNC_INTERVAL_MS
+        int "Heartbeat interval (ms)"
+        range 5000 3600000
+        default 30000
+
+    config FREENETX_ADC_SENSOR_GPIO
+        int "Analog sensor GPIO (ADC1: 32-39, -1 = disabled)"
+        range -1 39
+        default 34
+        help
+            ADC1 pin used to sample an analog sensor. On ESP32 the valid ADC1
+            pins are GPIO32..GPIO39 (GPIO34..39 are input-only, which is the
+            safest choice). Connect the sensor output here. Set -1 to disable
+            sampling. The sample is quantized from float (0..3300 mV) to int8
+            and reported in the heartbeat as adc_mv / adc_q.
+
+    config FREENETX_ADC_SENSOR_MIN_MV
+        int "Analog sensor range minimum (mV)"
+        range 0 3300
+        default 0
+
+    config FREENETX_ADC_SENSOR_MAX_MV
+        int "Analog sensor range maximum (mV)"
+        range 1 3300
+        default 3300
+        help
+            Quantization range used when compressing the ADC sample. Set these
+            to the sensor output span you expect (for example 500..2500 mV)
+            so the single quantized byte uses its full resolution.
+
+    config FREENETX_INTERNET_CHECK_URL
+        string "Internet check URL (empty = disabled)"
+        default "http://connectivitycheck.gstatic.com/generate_204"
+        help
+            The node requests this URL after joining the uplink. Any 2xx/3xx
+            response means the uplink really reaches the internet. Leave empty
+            to disable the check. Use an endpoint you control if you prefer.
+
+    config FREENETX_CPU_SCALING
+        bool "Enable dynamic CPU clock scaling (DFS)"
+        default y
+        help
+            Scales the CPU between the three frequencies the ESP32 supports
+            cleanly (80, 160 and 240 MHz) based on measured CPU load. The
+            clock is raised automatically around HTTP work and lowered again
+            when the node is idle, which reduces heat and USB current.
+
+    config FREENETX_CPU_FREQ_MIN_MHZ
+        int "CPU frequency - idle tier (MHz)"
+        range 40 240
+        default 80
+        help
+            Frequency used when CPU load is below 30 %%. 80 MHz is the lowest
+            frequency the Wi-Fi stack supports cleanly.
+
+    config FREENETX_CPU_FREQ_MED_MHZ
+        int "CPU frequency - medium tier (MHz)"
+        range 40 240
+        default 160
+        help
+            Frequency used when CPU load is between 30 %% and 70 %%.
+
+    config FREENETX_CPU_FREQ_MAX_MHZ
+        int "CPU frequency - high tier (MHz)"
+        range 40 240
+        default 240
+        help
+            Frequency used when CPU load is above 70 %%, and during HTTP
+            requests. Must be >= the medium tier, which must be >= the idle
+            tier. 240/160/80 are the standard ESP32 values.
+
+    config FREENETX_CPU_SCALING_INTERVAL_MS
+        int "CPU load sampling interval (ms)"
+        range 500 60000
+        default 2000
+        depends on FREENETX_CPU_SCALING
+        help
+            How often CPU utilization is measured. Shorter intervals react
+            faster but spend slightly more time collecting statistics.
+
+    config FREENETX_CPU_SELFTEST
+        bool "Run a one-shot CPU tier self-test at boot"
+        default n
+        depends on FREENETX_CPU_SCALING
+        help
+            After boot, walk the CPU through the high, medium and idle tiers
+            and log the frequency actually applied. Useful to verify that DFS
+            works on a new board. It only runs once and then gets out of the
+            way; leave it disabled in normal operation.
+
+    config FREENETX_STATUS_LED_GPIO
+        int "Status LED GPIO (-1 = disabled)"
+        range -1 48
+        default 2
+        help
+            GPIO driving the status LED. On the DOIT ESP32 DEVKIT V1 the
+            on-board LED is on GPIO2 and is blue. The LED is solid on while
+            the node is working, and blinks slowly while a configured uplink
+            is disconnected. Use -1 if no LED is fitted.
+
+    config FREENETX_STATUS_LED_ACTIVE_HIGH
+        bool "Status LED is active high"
+        default y
+        help
+            Enable if the LED lights when the GPIO is driven high. Disable for
+            an active-low LED (e.g. some external LEDs wired to 3V3).
+
+endmenu

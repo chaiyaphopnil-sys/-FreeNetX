@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Leelawadee UI, Tahoma, sans-serif">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0891b2"/>
+    </marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/>
+    </marker>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="660" fill="#f8fafc"/>
+  <text x="40" y="50" font-size="26" font-weight="bold" fill="#0f172a">การต่อสายและตำแหน่งขาที่ใช้งาน</text>
+  <text x="40" y="80" font-size="15" fill="#475569">ต่อเพียง USB และสัญญาณอะนาล็อกที่ GPIO34 เท่านั้น ไม่ต้องใช้สายไฟภายนอกเพิ่ม</text>
+
+  <!-- board -->
+  <g filter="url(#sh)">
+    <rect x="430" y="130" width="340" height="470" rx="18" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+    <!-- USB -->
+    <rect x="560" y="118" width="80" height="26" rx="4" fill="#94a3b8" stroke="#64748b"/>
+    <text x="600" y="112" text-anchor="middle" font-size="11" fill="#475569">USB Micro</text>
+    <!-- module -->
+    <rect x="470" y="176" width="260" height="150" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="600" y="220" text-anchor="middle" font-size="16" font-weight="bold" fill="#e2e8f0">ESP32-WROOM-32</text>
+    <text x="600" y="244" text-anchor="middle" font-size="12" fill="#94a3b8">DOIT ESP32 DEVKIT V1</text>
+    <text x="600" y="266" text-anchor="middle" font-size="11.5" fill="#67e8f9">4 MB Flash · 2.4 GHz Wi-Fi</text>
+    <rect x="560" y="282" width="80" height="26" rx="3" fill="#334155"/>
+    <text x="600" y="300" text-anchor="middle" font-size="10" fill="#cbd5e1">MAC ลงท้าย 8b:7c</text>
+
+    <!-- left pins -->
+    <g font-size="12" fill="#cbd5e1">
+      <rect x="400" y="356" width="30" height="18" rx="3" fill="#334155"/><text x="415" y="369" text-anchor="middle" font-size="10">3V3</text>
+      <rect x="400" y="386" width="30" height="18" rx="3" fill="#334155"/><text x="415" y="399" text-anchor="middle" font-size="10">GND</text>
+      <rect x="400" y="416" width="30" height="18" rx="3" fill="#334155"/><text x="415" y="429" text-anchor="middle" font-size="10">34</text>
+      <rect x="400" y="446" width="30" height="18" rx="3" fill="#334155"/><text x="415" y="459" text-anchor="middle" font-size="10">35</text>
+      <rect x="400" y="476" width="30" height="18" rx="3" fill="#334155"/><text x="415" y="489" text-anchor="middle" font-size="10">32</text>
+      <rect x="400" y="506" width="30" height="18" rx="3" fill="#334155"/><text x="415" y="519" text-anchor="middle" font-size="10">33</text>
+    </g>
+    <!-- right pins -->
+    <g font-size="12" fill="#cbd5e1">
+      <rect x="770" y="356" width="30" height="18" rx="3" fill="#334155"/><text x="785" y="369" text-anchor="middle" font-size="10">2</text>
+      <rect x="770" y="386" width="30" height="18" rx="3" fill="#334155"/><text x="785" y="399" text-anchor="middle" font-size="10">4</text>
+      <rect x="770" y="416" width="30" height="18" rx="3" fill="#334155"/><text x="785" y="429" text-anchor="middle" font-size="10">5</text>
+      <rect x="770" y="446" width="30" height="18" rx="3" fill="#334155"/><text x="785" y="459" text-anchor="middle" font-size="10">18</text>
+      <rect x="770" y="476" width="30" height="18" rx="3" fill="#334155"/><text x="785" y="489" text-anchor="middle" font-size="10">19</text>
+    </g>
+    <text x="415" y="345" text-anchor="middle" font-size="10" fill="#64748b">ซ้าย</text>
+    <text x="785" y="345" text-anchor="middle" font-size="10" fill="#64748b">ขวา</text>
+
+    <!-- onboard LED -->
+    <circle cx="700" cy="524" r="9" fill="#22d3ee" stroke="#67e8f9" stroke-width="2"/>
+    <text x="700" y="552" text-anchor="middle" font-size="11" fill="#67e8f9">LED น้ำเงินบนบอร์ด</text>
+    <text x="700" y="568" text-anchor="middle" font-size="10.5" fill="#94a3b8">ผูกกับ GPIO2</text>
+  </g>
+
+  <!-- USB callout -->
+  <g filter="url(#sh)">
+    <rect x="60" y="120" width="250" height="110" rx="12" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="185" y="148" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">1) สาย USB → คอมพิวเตอร์</text>
+    <text x="185" y="172" text-anchor="middle" font-size="12" fill="#475569">ใช้เป็นไฟเลี้ยง 5 V และช่องทาง</text>
+    <text x="185" y="192" text-anchor="middle" font-size="12" fill="#475569">อ่าน log ที่ 115200 baud (COMx)</text>
+    <text x="185" y="214" text-anchor="middle" font-size="11" fill="#0e7490">สายข้อมูล ไม่ใช่สายชาร์จอย่างเดียว</text>
+  </g>
+  <path d="M 310 175 C 380 175 420 130 552 130" fill="none" stroke="#0891b2" stroke-width="2.4" marker-end="url(#a1)"/>
+
+  <!-- Sensor callout -->
+  <g filter="url(#sh)">
+    <rect x="870" y="330" width="280" height="190" rx="12" fill="#ffffff" stroke="#f59e0b"/>
+    <text x="1010" y="360" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">2) สัญญาณอะนาล็อก 0–3.3 V</text>
+    <text x="1010" y="386" text-anchor="middle" font-size="12" fill="#475569">ต่อเข้าขา GPIO34 (ADC1 ช่อง 6)</text>
+    <text x="1010" y="410" text-anchor="middle" font-size="12" fill="#475569">แรงดันเกิน 3.3 V จะทำให้ชิปเสีย</text>
+    <text x="1010" y="434" text-anchor="middle" font-size="12" fill="#475569">ถ้าไม่ใช้ ให้ตั้งค่า GPIO เป็น -1</text>
+    <text x="1010" y="462" text-anchor="middle" font-size="11.5" fill="#b45309">ค่าที่อ่านได้จะถูกบีบอัดเป็น int8</text>
+    <text x="1010" y="482" text-anchor="middle" font-size="11.5" fill="#b45309">และแปลงกลับเพื่อตรวจสอบทุกครั้ง</text>
+    <text x="1010" y="506" text-anchor="middle" font-size="11" fill="#64748b">ใช้แหล่งจ่ายที่แชร์ GND ร่วมกับบอร์ด</text>
+  </g>
+  <path d="M 1010 330 C 1010 300 900 300 830 425" fill="none" stroke="#b45309" stroke-width="2.4" marker-end="url(#a2)"/>
+
+  <!-- LED callout -->
+  <g filter="url(#sh)">
+    <rect x="60" y="440" width="260" height="150" rx="12" fill="#ffffff" stroke="#0891b2"/>
+    <text x="190" y="468" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">3) ไฟสถานะในตัว</text>
+    <text x="190" y="492" text-anchor="middle" font-size="12" fill="#475569">LED น้ำเงินบนบอร์ด (GPIO2)</text>
+    <text x="190" y="516" text-anchor="middle" font-size="12" fill="#475569">ติดค้างทันทีเมื่อได้รับไฟ</text>
+    <text x="190" y="540" text-anchor="middle" font-size="12" fill="#475569">ไม่ต้องกดปุ่มใด ๆ</text>
+    <text x="190" y="566" text-anchor="middle" font-size="11" fill="#0e7490">ดูความหมายของรูปแบบไฟในหัวข้อ 6</text>
+  </g>
+  <path d="M 320 520 C 450 520 560 520 688 524" fill="none" stroke="#0891b2" stroke-width="2.4" marker-end="url(#a1)"/>
+
+  <!-- warning -->
+  <rect x="352" y="626" width="520" height="0" fill="none"/>
+</svg>
